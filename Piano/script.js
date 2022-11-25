@@ -1,6 +1,9 @@
 const WHITE_KEYS = ['z', 'x', 'c', 'v', 'b', 'n', 'm']
 const BLACK_KEYS = ['s', 'd', 'g', 'h', 'j']
-let tempo = 120
+let tempo = 80
+let recording = false
+let metronomeId = 0
+const metronomeAudio = new Audio('sounds/metronome.mp3')
 
 const keys = document.querySelectorAll('.key')
 const whiteKeys = document.querySelectorAll('.key.white')
@@ -30,7 +33,37 @@ function playNote(key) {
     key.classList.remove('active')
   })
 }
+const metronome = () => {
+  setInterval(() => {
+      metronomeAudio.currentTime = 0
+      //metronomeAudio.play()
+    },
+    60000/tempo // execute the above code every 10ms
+  )
+}
+
+function playMetronome(){
+  metronomeAudio.currentTime = 0
+  metronomeAudio.play()
+}
+function tempoToMS(){
+  return 60000/tempo
+}
+
 
 function setTempo(){
-  tempo = document.getElementById("userInput").value;
+  let tempoInput = document.getElementById("tempoInput").value;
+  if(isNaN(tempoInput) || tempoInput < 30 || tempoInput > 240){
+    alert("Please provide a valid tempo");
+  }
+  else{
+    tempo = tempoInput;
+    if(recording){
+      clearInterval(metronomeId);
+    }
+    metronomeId = setInterval(playMetronome, tempoToMS())
+    recording = true
+    console.log("olá");
+  }
+  console.log(tempo);
 }
