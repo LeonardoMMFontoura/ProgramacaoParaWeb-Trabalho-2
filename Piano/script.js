@@ -1,8 +1,9 @@
-const WHITE_KEYS = ['z', 'x', 'c', 'v', 'b', 'n', 'm']
+const WHITE_KEYS = ['z', 'x', 'c', 'v', 'b', 'n', 'm', ',']
 const BLACK_KEYS = ['s', 'd', 'g', 'h', 'j']
 let tempo = 80
-let recording = false
 let metronomeId = 0
+let currentRecording = ""
+let recordings = []
 const metronomeAudio = new Audio('sounds/metronome.mp3')
 
 const keys = document.querySelectorAll('.key')
@@ -26,20 +27,13 @@ document.addEventListener('keydown', e => {
 
 function playNote(key) {
   const noteAudio = document.getElementById(key.dataset.note)
-  noteAudio.currentTime = 0
+  currentRecording = currentRecording.concat(noteAudio.id.toString()).concat("\n")
+  noteAudio.currentTime = 0.2
   noteAudio.play()
   key.classList.add('active')
   noteAudio.addEventListener('ended', () => {
     key.classList.remove('active')
   })
-}
-const metronome = () => {
-  setInterval(() => {
-      metronomeAudio.currentTime = 0
-      //metronomeAudio.play()
-    },
-    60000/tempo // execute the above code every 10ms
-  )
 }
 
 function playMetronome(){
@@ -51,19 +45,26 @@ function tempoToMS(){
 }
 
 
-function setTempo(){
+function startRecording(){
   let tempoInput = document.getElementById("tempoInput").value;
   if(isNaN(tempoInput) || tempoInput < 30 || tempoInput > 240){
     alert("Please provide a valid tempo");
   }
   else{
+    document.getElementById("start").disabled = true
+    document.getElementById("stop").disabled = false
     tempo = tempoInput;
-    if(recording){
-      clearInterval(metronomeId);
-    }
     metronomeId = setInterval(playMetronome, tempoToMS())
-    recording = true
-    console.log("olá");
+    tempoString = tempo.toString();
+    currentRecording = currentRecording.concat(tempoString).concat("\n")
   }
-  console.log(tempo);
+  console.log(currentRecording);
+}
+function stopRecording(){
+  clearInterval(metronomeId)
+  console.log(currentRecording)
+  recordings.push(currentRecording)
+  currentRecording = ""
+  document.getElementById("start").disabled = false
+  document.getElementById("stop").disabled = true
 }

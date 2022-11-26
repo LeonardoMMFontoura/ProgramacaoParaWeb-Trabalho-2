@@ -11,36 +11,37 @@
 <body>
   <p>Enter the bpm you wish (from 30 to 240 bpm)</p>
   <input id="tempoInput" type="number" placeholder="80">
-  <button onclick="setTempo()">Submit</button>
+  <button id= "start" onclick="startRecording()">Start</button>
+  <button id = "stop" disabled = true onclick="stopRecording()">Stop</button>
 
   <div class="piano">
-    <div data-note="C" class="key white"></div>
-    <div data-note="Db" class="key black"></div>
-    <div data-note="D" class="key white"></div>
-    <div data-note="Eb" class="key black"></div>
-    <div data-note="E" class="key white"></div>
-    <div data-note="F" class="key white"></div>
-    <div data-note="Gb" class="key black"></div>
-    <div data-note="G" class="key white"></div>
-    <div data-note="Ab" class="key black"></div>
-    <div data-note="A" class="key white"></div>
-    <div data-note="Bb" class="key black"></div>
-    <div data-note="B" class="key white"></div>
-    <div data-note="C2" class="key white"></div>
+    <div data-note="C4" class="key white"></div>
+    <div data-note="Db4" class="key black"></div>
+    <div data-note="D4" class="key white"></div>
+    <div data-note="Eb4" class="key black"></div>
+    <div data-note="E4" class="key white"></div>
+    <div data-note="F4" class="key white"></div>
+    <div data-note="Gb4" class="key black"></div>
+    <div data-note="G4" class="key white"></div>
+    <div data-note="Ab4" class="key black"></div>
+    <div data-note="A4" class="key white"></div>
+    <div data-note="Bb4" class="key black"></div>
+    <div data-note="B4" class="key white"></div>
+    <div data-note="C5" class="key white"></div>
   </div>
 
-  <audio id="C" src="sounds/c4.mp3"></audio>
-  <audio id="Db" src="sounds/c-4.mp3"></audio>
-  <audio id="D" src="sounds/d4.mp3"></audio>
-  <audio id="Eb" src="sounds/d-4.mp3"></audio>
-  <audio id="E" src="sounds/e4.mp3"></audio>
-  <audio id="F" src="sounds/f4.mp3"></audio>
-  <audio id="Gb" src="sounds/f-4.mp3"></audio>
-  <audio id="G" src="sounds/g4.mp3"></audio>
-  <audio id="Ab" src="sounds/g-4.mp3"></audio>
-  <audio id="A" src="sounds/a4.mp3"></audio>
-  <audio id="Bb" src="sounds/a-4.mp3"></audio>
-  <audio id="B" src="sounds/b4.mp3"></audio>
-  <audio id="C2" src="sounds/c5.mp3"></audio>
+  <audio id="C4" src="sounds/c4.mp3"></audio>
+  <audio id="Db4" src="sounds/c-4.mp3"></audio>
+  <audio id="D4" src="sounds/d4.mp3"></audio>
+  <audio id="Eb4" src="sounds/d-4.mp3"></audio>
+  <audio id="E4" src="sounds/e4.mp3"></audio>
+  <audio id="F4" src="sounds/f4.mp3"></audio>
+  <audio id="Gb4" src="sounds/f-4.mp3"></audio>
+  <audio id="G4" src="sounds/g4.mp3"></audio>
+  <audio id="Ab4" src="sounds/g-4.mp3"></audio>
+  <audio id="A4" src="sounds/a4.mp3"></audio>
+  <audio id="Bb4" src="sounds/a-4.mp3"></audio>
+  <audio id="B4" src="sounds/b4.mp3"></audio>
+  <audio id="C5" src="sounds/c5.mp3"></audio>
 </body>
 </html>
