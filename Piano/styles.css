@@ -13,6 +13,31 @@
   
   .piano {
     display: flex;
+    position: fixed;
+  }
+
+  .recordingMenu{
+    position: relative;
+    bottom: 300px;
+    left: 700px;
+    color: white;
+  }
+
+  .recordings{
+    position: relative;
+    top: 300px;
+    left: 150px;
+  }
+
+  .deleteRecordings{
+    position: relative;
+    top: 400px;
+    right: 550px;
+  }
+
+  .stopRecording{
+    position: relative;
+    top: 300px;
   }
   
   .key {
