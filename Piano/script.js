@@ -70,7 +70,7 @@ function stopRecording(){
   clearInterval(metronomeId)
   for(let i = 0; i<=4; i++){
     if(recordings[i]==null){
-      console.log("oi")
+      console.log(currentRecording)
       recordings[i] = currentRecording
       currentRecording = ""
       break
@@ -84,7 +84,6 @@ function stopRecording(){
 function enableRecordingButtons(){
 
   for(let i = 1;i<=5;i++){
-    console.log(recordings[i-1])
     if(recordings[i-1]!=null){
       document.getElementById(`recording${i.toString()}`).disabled = false
       document.getElementById(`deleteRecording${i.toString()}`).disabled = false
@@ -106,6 +105,7 @@ async function playRecording(recordingNum){
   disableRecordingButtons()
   document.getElementById("stopPlayback").disabled = false
   recording = recordings[recordingNum-1]
+  console.log(recording)
   notes = recording.split("\n")
   bpm = notes[0]
   for(let i = 1; i<notes.length; i++){
@@ -115,6 +115,7 @@ async function playRecording(recordingNum){
     if(stopPlaying){
       enableRecordingButtons()
       document.getElementById("stopPlayback").disabled = true
+      stopPlaying = false
       return
     }
   }
