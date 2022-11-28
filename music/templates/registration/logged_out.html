@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="{% static 'piano_man/styles.css' %}">
+  {% comment %} <script src="{% static 'piano_man/script.js' %}" defer></script> {% endcomment %}
+  <title>Logout</title>
+</head>
+<body>
+    <p> Você fez o logout </p>
+    <a href="{% url login %}">Faça Login De Novo</a>
+
+</body>

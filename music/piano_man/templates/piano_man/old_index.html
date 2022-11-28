@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Piano Man</h1>
+
+    <a href="{% url 'piano_man:testes' %}">GO</a>
+
+
+    <ul>
+        {% for arquivo in Arquivos %}
+            <li>{{arquivo.id}}: {{arquivo.nome_arquivo}}  <a href="{% url 'piano_man:editar' arquivo.id  %}">Update</a></li>
+        {% endfor %}
+    </ul>
+
+
+    <form action="{% url 'piano_man:salvar' %}" method="POST">
+        {% csrf_token %}
+        <input type="text" name="nome_arquivo">
+        <button type="submit">Salvar</button>
+    </form>
+
+
+</body>
+</html>

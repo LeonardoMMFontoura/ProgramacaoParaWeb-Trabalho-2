@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="{% static 'piano_man/styles.css' %}">
+  <script src="{% static 'piano_man/script.js' %}" defer></script>
+  <title>Piano</title>
+</head>
+<body>
+  <div class="recordingMenu">  
+  {% if user.is_authenticated %}
+      <p> Seja bem-vindo:  {{user.get_username | capfirst}} </p>
+      <a href="{% url 'logout' %}?next={{request.path}}">Logout</a>
+    {% else %}
+    <p> Voce não está logado </p>
+    <a href="{% url 'login' %}?next={{request.path}}">Login</a>
+  {% endif %}
+  <p>Enter the bpm you wish (from 30 to 240 bpm)</p>
+  <input id="tempoInput" type="number" placeholder="">
+  <button id= "start" onclick="startRecording()">Start recording</button>
+  <button id = "stop" disabled = true onclick="stopRecording()">Stop recording</button>
+  </div>
+
+
+  <div class="piano">
+    <div data-note="C4" class="key white"></div>
+    <div data-note="Db4" class="key black"></div>
+    <div data-note="D4" class="key white"></div>
+    <div data-note="Eb4" class="key black"></div>
+    <div data-note="E4" class="key white"></div>
+    <div data-note="F4" class="key white"></div>
+    <div data-note="Gb4" class="key black"></div>
+    <div data-note="G4" class="key white"></div>
+    <div data-note="Ab4" class="key black"></div>
+    <div data-note="A4" class="key white"></div>
+    <div data-note="Bb4" class="key black"></div>
+    <div data-note="B4" class="key white"></div>
+    <div data-note="C5" class="key white"></div>
+  </div>
+
+  <div class="recordings">
+    <button id = "recording1" disabled = true onclick="playRecording(1)">Play Recording 1</button>
+    <button id = "recording2" disabled = true onclick="playRecording(2)">Play Recording 2</button>
+    <button id = "recording3" disabled = true onclick="playRecording(3)">Play Recording 3</button>
+    <button id = "recording4" disabled = true onclick="playRecording(4)">Play Recording 4</button>
+    <button id = "recording5" disabled = true onclick="playRecording(5)">Play Recording 5</button>
+    <button id = "stopPlayback" disabled = true onclick = "stopPlayback()"> Stop Playback</button>
+  </div>
+  <div class="deleteRecordings">
+    <button id = "deleteRecording1" disabled = true onclick="deleteRecording(1)">Delete Recording 1</button>
+    <button id = "deleteRecording2" disabled = true onclick="deleteRecording(2)">Delete Recording 2</button>
+    <button id = "deleteRecording3" disabled = true onclick="deleteRecording(3)">Delete Recording 3</button>
+    <button id = "deleteRecording4" disabled = true onclick="deleteRecording(4)">Delete Recording 4</button>
+    <button id = "deleteRecording5" disabled = true onclick="deleteRecording(5)">Delete Recording 5</button>
+  </div>
+
+  <audio id="C4" src="{% static 'piano_man/C4.mp3' %}"></audio>
+  <audio id="Db4" src="{% static 'piano_man/Db4.mp3' %}"></audio>
+  <audio id="D4" src="{% static 'piano_man/D4.mp3' %}"></audio>
+  <audio id="Eb4" src="{% static 'piano_man/Eb4.mp3' %}"></audio>
+  <audio id="E4" src="{% static 'piano_man/E4.mp3' %}"></audio>
+  <audio id="F4" src="{% static 'piano_man/F4.mp3' %}"></audio>
+  <audio id="Gb4" src="{% static 'piano_man/Gb4.mp3' %}"></audio>
+  <audio id="G4" src="{% static 'piano_man/G4.mp3' %}"></audio>
+  <audio id="Ab4" src="{% static 'piano_man/Ab4.mp3' %}"></audio>
+  <audio id="A4" src="{% static 'piano_man/A4.mp3' %}"></audio>
+  <audio id="Bb4" src="{% static 'piano_man/Bb4.mp3' %}"></audio>
+  <audio id="B4" src="{% static 'piano_man/B4.mp3' %}"></audio>
+  <audio id="C5" src="{% static 'piano_man/C5.mp3' %}"></audio>
+  <audio id="metronome" src="{% static 'piano_man/metronome.mp3' %}"></audio>
+</body>
+</html>
