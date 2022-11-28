@@ -1,1 +1,1 @@
-web: gunicorn ProgramacaoParaWeb-Trabalho-2.wsgi
+web: gunicorn music.wsgi
