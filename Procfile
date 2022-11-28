@@ -1,2 +1,2 @@
-web: gunicorn music.wsgi --log-file
+web: gunicorn music.wsgi 
 python manage.py migrate
