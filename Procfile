@@ -1,2 +1,1 @@
-web: gunicorn ProgramacaoParaWeb-Trabalho-2.wsgi 
-python manage.py migrate
+web: gunicorn piano_man.wsgi 
