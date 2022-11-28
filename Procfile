@@ -1,1 +1,1 @@
-web: gunicorn piano_man.wsgi 
+web: gunicorn music.wsgi 
